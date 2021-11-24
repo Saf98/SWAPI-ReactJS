@@ -5,10 +5,10 @@ function App() {
   const [data, setData] = useState([]);
   const [value, setValue] = useState('');
   const [arr, setNewArr] = useState([]);
-
+  const [isFound, setIsFound] = useState(null);
 
   useEffect(() => {
-    async function getAPI() {
+    const getAPI = async () => {
       const url = 'https://swapi.dev/api/people/';
       const response = await fetch(url, {
         method: 'GET',
@@ -19,33 +19,22 @@ function App() {
 
       const getData = await response.json();
       setData(getData.results);
-      console.log(data);
     };
-    getAPI();
 
+    getAPI();
   }, []);
 
+  const printThis = () => {
+    setNewArr(
+      data.filter((character) => 
+      character.name.toLowerCase().includes(value))
+    )
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     printThis();
   };
-
-  const printThis = () => {
-    data.filter((item) => {
-      if (item.name.toLowerCase().includes(value)) {
-        setNewArr(item);
-      } else {
-        return null;
-      }
-    });
-  };
-
-  console.log(arr.name);
-  console.log(arr.birth_year);
-  console.log(arr.gender);
-
 
   return (
     <Fragment>
@@ -62,12 +51,15 @@ function App() {
           submit
         </button>
       </form>
-      <p>{`input value ${value}`}</p>
-      <ul>
-        <li>{arr.name}</li>
-        <li>{arr.birth_year}</li>
-        <li>{arr.gender}</li>
-      </ul>
+      {arr.length === 0 ? <p>no</p> : arr.map((element, index) => {
+        return (
+          <ul key={index}>
+            <li>{element.name}</li>
+            <li>{element.gender}</li>
+            <li>{element.birth_year}</li>
+          </ul>
+        );
+      })}
     </Fragment>
   );
 
