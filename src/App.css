@@ -1,38 +1,145 @@
-.App {
-  text-align: center;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  margin: 0 auto;
+  padding: 10px;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (min-width: 768px) {
+  .container {
+    margin: 0 auto;
+    width: 1000px;
+
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.row {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+[class*='col'] {
+  width: 100%;
+  padding: 16px;
+  border-radius: 7px;
+}
+
+.col {
+  flex: 1;
+  margin-top: 10px;
+  background-color: rgb(246, 219, 244);
+}
+
+@media screen and (min-width: 768px) {
+  .col {
+    flex: 1;
+    margin: 0px;
+    margin-left: 10px;  
+  }
+
+  .col-6 { 
+    width: 50%; 
+  }
+
+  .col-12 { 
+    width: 100%; 
+  } 
+}
+
+.search-container {
+  background-color: rgb(214, 214, 214);
+  padding: 16px;
+  margin: 10px 0;
+
+}
+
+input {
+  padding: 10px;
+  border-radius: 4px;
+
+}
+
+label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+button {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: rgb(87, 58, 255);
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+@media screen and (min-width: 768px) {
+  .search-container {
+    background-color: rgb(214, 214, 214);
+    padding: 16px;
+    margin: 10px 0;
+
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 4px;
+
+  }
+
+  label {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  button {
+    margin-left: 10px;
+    padding: 10px;
+    background-color: rgb(87, 58, 255);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 900;
+  }
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.card-item {
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card-item_label {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(104, 4, 4);
+  text-decoration: underline;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-item_result {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(20, 0, 66);
 }
+
+
