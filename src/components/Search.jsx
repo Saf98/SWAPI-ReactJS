@@ -12,6 +12,7 @@ const Search = ({handleSubmit, character, onChange}) => {
               id='searchBar'
               value={character}
               onChange={(e) => onChange(e.target.value.toLowerCase())}
+              required
             >
             </input>
             <button type='submit'>
