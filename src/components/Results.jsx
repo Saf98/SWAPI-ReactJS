@@ -1,7 +1,6 @@
 import React from "react";
 
 const Results = ({ data }) => {
-  console.log('props:', data.length);
   if (data.length > 0) {
     return (
       data.map((element, index) => {
@@ -22,7 +21,7 @@ const Results = ({ data }) => {
               </div>
             </div>
           </div>
-        )
+        );
       })
     )
   }
@@ -30,13 +29,11 @@ const Results = ({ data }) => {
   if (data.length === 0) {
     return (
       <div className='wrap'>
-        <div className='card-content'>
-          <div className='card-item'>
-            <p className='card-item_label'>no results</p>
-          </div>
+        <div className='no-results'>
+          <p>no results found</p>
         </div>
       </div>
-    )
+    );
   }
 };
 

@@ -17,7 +17,6 @@ function App() {
   }, []);
   
   const checkCharacterName = () => {
-    console.log('check', charactersData);
     setFilteredData(
       charactersData.filter((character) => {
         if (!character.name) {
@@ -34,8 +33,6 @@ function App() {
     e.preventDefault();
     checkCharacterName();
   };
-
-  console.log(filteredData);
 
   return (
     <Fragment>
