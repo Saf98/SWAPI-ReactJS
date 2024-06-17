@@ -18,20 +18,7 @@ const Search = ({ handleSubmit, character, onChange }) => {
           </form>
         </div>
       </div>
-      <div className="row">
-        <div className="col">
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>DoB</th>
-                <th>Gender</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
+
     </div>
   );
 };

@@ -1,17 +1,13 @@
 import React from "react";
 
 const Results = ({ data }) => {
-  if (data.length > 0) {
-    return data.map((element, index) => {
-      return (
-        <tr key={index}>
-          <td>{element.name}</td>
-          <td>{element.birth_year}</td>
-          <td>{element.gender}</td>
-        </tr>
-      );
-    });
-  }
+
+  // const selectEntries = (obj, arr) => {
+  //   arr.reduce((acc, record) => (record in obj && (acc[record])), {})
+  // }
+
+  // const res = selectEntries(data, ["name", "gender"]);
+
 
   if (data.length === 0) {
     return (
@@ -22,6 +18,31 @@ const Results = ({ data }) => {
       </div>
     );
   }
+
+  return (
+    <div>
+      {data.map((row, index) => {
+        return (
+          <table>
+            <thead>
+              <tr key={index}>
+                {Object.keys(row).map((key, index) => {
+                  return <td key={index}>{key}</td>;
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              <tr key={index}>
+                {Object.keys(row).map((key, index) => {
+                  return <td key={index}>{row[key]}</td>;
+                })}
+              </tr>
+            </tbody>
+          </table>
+        );
+      })}
+    </div>
+  );
 };
 
 export default Results;
