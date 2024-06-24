@@ -3,6 +3,7 @@ import React, { Fragment, useState, useEffect, useRef } from "react";
 import { getData } from "./services/getData";
 import Results from "./components/Results";
 import Search from "./components/Search";
+import { BasicTable } from "./components/BasicTable";
 
 function App() {
   const [charactersData, setCharactersData] = useState(null);
@@ -41,7 +42,7 @@ function App() {
 
   return (
     <Fragment>
-      <Search
+      {/* <Search
         handleSubmit={handleSubmit}
         character={characterName}
         onChange={(characterName) => setCharacterName(characterName)}
@@ -50,7 +51,8 @@ function App() {
         <div className="row">
           {filteredData && <Results data={filteredData} />}
         </div>
-      </div>
+      </div> */}
+      <BasicTable />
     </Fragment>
   );
 }

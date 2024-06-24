@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Results = ({ data }) => {
+  const [newArray, setNewArray] = useState([]);
 
-  // const selectEntries = (obj, arr) => {
-  //   arr.reduce((acc, record) => (record in obj && (acc[record])), {})
-  // }
+  const newData = (value) => {
+    data.filter((el) => {
+      const key = Object.keys(el).filter((key) => {
+        const res = value === key;
+        return res;
+      });
+      const newKey = key.join();
+      const newVal = el[value];
+      const obj = {
+        [newKey]: newVal
+      }
+      return obj;
+      
+    });
+  };
 
-  // const res = selectEntries(data, ["name", "gender"]);
-
-
+  newData("gender")
+  
   if (data.length === 0) {
     return (
       <div className="wrap">
@@ -19,30 +31,35 @@ const Results = ({ data }) => {
     );
   }
 
-  return (
-    <div>
-      {data.map((row, index) => {
-        return (
-          <table>
-            <thead>
-              <tr key={index}>
-                {Object.keys(row).map((key, index) => {
-                  return <td key={index}>{key}</td>;
-                })}
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={index}>
-                {Object.keys(row).map((key, index) => {
-                  return <td key={index}>{row[key]}</td>;
-                })}
-              </tr>
-            </tbody>
-          </table>
-        );
-      })}
-    </div>
-  );
+  // return (
+  //   <div>
+  //     {data.map((el) => {
+  //      const { name, gender } = el;
+  //      console.log({name, gender})
+  //     })}
+  //   </div>
+  // )
+
+  // return (
+  //   <div>
+  //     {newArray.map((row, index) => {
+  //       return (
+  //         <table>
+  //           <thead>
+  //             <tr key={index}>
+  //               <td>{row}</td>
+  //             </tr>
+  //           </thead>
+  //           <tbody>
+  //             <tr key={index}>
+  //               <td>{row.name}</td>
+  //             </tr>
+  //           </tbody>
+  //         </table>
+  //       );
+  //     })}
+  //   </div>
+  // );
 };
 
 export default Results;

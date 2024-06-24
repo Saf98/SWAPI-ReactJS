@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   background-color: rgba(0, 0, 0, 0.883);
-}
+} */
 
 .container {
   margin: 0 auto;
@@ -14,7 +14,7 @@ body {
 
 }
 
-table {
+/* table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -29,7 +29,7 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
-}
+} */
 
 @media screen and (min-width: 768px) {
   .container {
