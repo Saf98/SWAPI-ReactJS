@@ -4,6 +4,7 @@ import { getData } from "./services/getData";
 import Results from "./components/Results";
 import Search from "./components/Search";
 import { BasicTable } from "./components/BasicTable";
+import { FilteringTable } from "./components/FilteringTable";
 
 function App() {
   const [charactersData, setCharactersData] = useState(null);
@@ -52,7 +53,7 @@ function App() {
           {filteredData && <Results data={filteredData} />}
         </div>
       </div> */}
-      <BasicTable />
+      <FilteringTable />
     </Fragment>
   );
 }
