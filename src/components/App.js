@@ -68,8 +68,10 @@ function App() {
         {defaultFilterKeys?.map((itemValue, idx) => {
           return (
             <button
-              className={`button ${
-                selectedFilters?.includes(itemValue) ? "active" : ""
+              className={`text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 " ${
+                selectedFilters?.includes(itemValue)
+                  ? "focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700"
+                  : ""
               }`}
               onClick={() => handleFilterCols(itemValue)}
               key={idx}
@@ -80,28 +82,41 @@ function App() {
           );
         })}
       </div>
-      <table>
-        <thead>
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             {selectedFilters.length <= 0
               ? defaultFilterKeys?.map((row, id) => {
-                  return <th key={id}>{row}</th>;
+                  return (
+                    <th scope="col" className="px-6 py-3" key={id}>
+                      {row}
+                    </th>
+                  );
                 })
               : filteredItems?.map((row, id) => {
-                  return <th key={id}>{row}</th>;
+                  return (
+                    <th scope="col" className="px-6 py-3" key={id}>
+                      {row}
+                    </th>
+                  );
                 })}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
           {selectedFilters.length <= 0
             ? charactersData?.map((character, idx) => {
                 return (
                   <tr key={idx}>
-                    <td>{character["name"]}</td>
-                    <td>{character["gender"]}</td>
-                    <td>{character["birth_year"]}</td>
-                    <td>{character["hair_color"]}</td>
-                    <td>{character["eye_color"]}</td>
+                    <td
+                      scope="col"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {character["name"]}
+                    </td>
+                    <td className="px-6 py-4">{character["gender"]}</td>
+                    <td className="px-6 py-4">{character["birth_year"]}</td>
+                    <td className="px-6 py-4">{character["hair_color"]}</td>
+                    <td className="px-6 py-4">{character["eye_color"]}</td>
                   </tr>
                 );
               })
