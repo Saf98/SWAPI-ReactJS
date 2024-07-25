@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import { getData } from "../services/getData";
+import Header from "./Header";
 
 function App() {
   let defaultFilterKeys = [
@@ -59,11 +60,19 @@ function App() {
   };
 
   return (
+
     <Fragment>
-      <input
+      <div className={"bg-violet-950"}>
+      <Header />
+      <div className={"flex flex-row justify-center py-20"}>
+        <input
+        className={"placeholder:text-2xl w-full placeholder:text-slate-400 font-bold block bg-white w-96"}
+        placeholder="Search Database..."
         value={inputFieldValue}
         onChange={(e) => setInputFieldValue(e.target.value)}
       />
+      </div>
+      
       <div className="buttons-container">
         {defaultFilterKeys?.map((itemValue, idx) => {
           return (
@@ -144,6 +153,7 @@ function App() {
               })}
         </tbody>
       </table>
+      </div>
     </Fragment>
   );
 }
