@@ -1,26 +1,29 @@
 const Pagination = ({
-  totalPosts,
-  postsPerPage,
-  setCurrentPage,
+  totalPostsCount,
+  onHandlePageChange,
   currentPage,
+  siblings,
+  returnPaginationRange
 }) => {
-  let pages = [];
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pages.push(i);
-  }
+  let array = returnPaginationRange(totalPostsCount, currentPage, siblings);
+
   return (
     <div>
-      {pages?.map((page, index) => {
+      <button onClick={() => onHandlePageChange("&laquo;")}>&laquo;</button>
+      <button onClick={() => onHandlePageChange("&lsaquo;")}>&lsaquo;</button>
+      {array.map((value, id) => {
         return (
           <button
-            key={index}
-            onClick={() => setCurrentPage(page)}
-            className={page === currentPage ? "active" : ""}
+            key={id}
+            className={value === currentPage ? "active" : ""}
+            onClick={() => onHandlePageChange(value)}
           >
-            {page}
+            {value}
           </button>
         );
       })}
+      <button onClick={() => onHandlePageChange("&rsaquo;")}>&rsaquo;</button>
+      <button onClick={() => onHandlePageChange("&raquo;")}>&raquo;</button>
     </div>
   );
 };
