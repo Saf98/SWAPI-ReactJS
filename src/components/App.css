@@ -1,0 +1,183 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* body {
+  background-color: rgba(0, 0, 0, 0.883);
+} */
+
+.container {
+  margin: 0 auto;
+  padding: 10px;
+
+}
+
+/* table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  background-color: #ffffff;
+  text-align: left;
+  padding: 14px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+} */
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin: 0 auto;
+    width: 1000px;
+
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+[class*='col'] {
+  width: 100%;
+  padding: 16px;
+  border-radius: 7px;
+}
+
+.col {
+  flex: 1;
+  margin-top: 10px;
+  background-color: rgb(246, 219, 244);
+}
+
+.wrap {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+
+}
+
+@media screen and (min-width: 768px) {
+  .wrap {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+  
+  }
+}
+
+.search-container {
+  background-color: rgb(214, 214, 214);
+  padding: 16px;
+  margin: 10px 0;
+
+}
+
+input {
+  padding: 10px;
+  border-radius: 4px;
+
+}
+
+label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+button {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: rgb(0, 119, 30);
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+@media screen and (min-width: 768px) {
+  .search-container {
+    background-color: rgb(214, 214, 214);
+    padding: 16px;
+    margin: 10px 0;
+
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 4px;
+
+  }
+
+  label {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+}
+
+.no-results {
+  background-color: transparent;
+}
+
+.no-results > p {
+  color: aliceblue;
+  font-size: 24px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(246, 219, 244);
+  justify-content: space-between;
+  padding: 16px;
+  margin-top: 10px;
+  border-radius: 7px;
+}
+
+@media screen and (min-width: 768px) { 
+  .card-content {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(246, 219, 244);
+    justify-content: space-between;
+    padding: 16px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 7px;
+  }
+}
+
+.card-item_label {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(104, 4, 4);
+  text-decoration: underline;
+}
+
+.card-item_result {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(20, 0, 66);
+}
+
+
+.active {
+  background-color: black;
+  color: aliceblue;
+}
