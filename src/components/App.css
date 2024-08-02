@@ -175,3 +175,9 @@ button {
   font-weight: 500;
   color: rgb(20, 0, 66);
 }
+
+
+.active {
+  background-color: black;
+  color: aliceblue;
+}
