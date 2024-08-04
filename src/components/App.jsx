@@ -158,23 +158,21 @@ function App() {
 
   return (
     <Fragment>
-      <div className={"bg-violet-950"}>
+      <div>
         <Header />
-        <div className={"flex flex-row justify-center py-20"}>
+        <div className={"search-container"}>
           <input
-            className={
-              "placeholder:text-2xl w-full placeholder:text-slate-400 font-bold block bg-white w-96"
-            }
+            id="search"
             placeholder="Search Database..."
             value={inputFieldValue}
             onChange={(e) => setInputFieldValue(e.target.value)}
           />
         </div>
 
-        <div className="buttons-container">
+        <div className="form-control-container">
           {defaultFilterKeys?.map((obj, id) => {
             return (
-              <label key={id} style={{ marginRight: "10px" }}>
+              <label className={"form-control"} key={id} style={{ marginRight: "10px" }}>
                 <input
                   key={id}
                   type="checkbox"
@@ -186,8 +184,8 @@ function App() {
             );
           })}
         </div>
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="">
+          <thead className="">
             <tr>
               {defaultFilterKeys.map(
                 (column) =>
@@ -203,10 +201,13 @@ function App() {
             {getFilteredRow(results, inputFieldValue)?.map((row) => (
               <tr key={row.id}>
                 {defaultFilterKeys.map(
-                  (column) =>
-                    visibleColumns[column.id] && (
-                      <td key={column.id}>{row[column.id]}</td>
-                    )
+                  (column) => {
+
+                    {console.log(row[column.id] === "brown")}
+                      return visibleColumns[column.id] && (
+                        <td key={column.id}><span className="pill">{row[column.id]}</span></td>
+                      )
+                  }
                 )}
               </tr>
             ))}

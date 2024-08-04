@@ -1,29 +1,55 @@
+import "./App.css";
+
 const Pagination = ({
   totalPostsCount,
   onHandlePageChange,
   currentPage,
   siblings,
-  returnPaginationRange
+  returnPaginationRange,
 }) => {
   let array = returnPaginationRange(totalPostsCount, currentPage, siblings);
 
   return (
-    <div>
-      <button onClick={() => onHandlePageChange("&laquo;")}>&laquo;</button>
-      <button onClick={() => onHandlePageChange("&lsaquo;")}>&lsaquo;</button>
+    <div className="buttons-container">
+      <button
+        className="page-button"
+        onClick={() => onHandlePageChange("&laquo;")}
+      >
+        &laquo;
+      </button>
+      <button
+        className="page-button"
+        onClick={() => onHandlePageChange("&lsaquo;")}
+      >
+        &lsaquo;
+      </button>
       {array.map((value, id) => {
         return (
           <button
             key={id}
-            className={value === currentPage ? "active" : ""}
+            className={
+              value === currentPage
+                ? "active"
+                : "page-button"
+            }
             onClick={() => onHandlePageChange(value)}
           >
             {value}
           </button>
         );
       })}
-      <button onClick={() => onHandlePageChange("&rsaquo;")}>&rsaquo;</button>
-      <button onClick={() => onHandlePageChange("&raquo;")}>&raquo;</button>
+      <button
+        className="page-button"
+        onClick={() => onHandlePageChange("&rsaquo;")}
+      >
+        &rsaquo;
+      </button>
+      <button
+        className="page-button"
+        onClick={() => onHandlePageChange("&raquo;")}
+      >
+        &raquo;
+      </button>
     </div>
   );
 };
