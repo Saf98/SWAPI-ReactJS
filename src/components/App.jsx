@@ -4,6 +4,9 @@ import { getData } from "../services/getData";
 import Header from "./Header";
 import Pagination from "./Pagination";
 import _ from "lodash";
+import Table from "./Table";
+import SearchInput from "./SearchInput";
+import CheckBoxFilter from "./CheckBoxFilter";
 
 const getFilteredRow = (rows, filteredKey) => {
   return rows.filter((row) =>
@@ -55,6 +58,7 @@ function App() {
   const [sortingDirections, setSortingDirections] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
+  // TODO Fix initial buttons 
   const [totalPostsCount, setTotalPostsCount] = useState(0);
   const [inputFieldValue, setInputFieldValue] = useState("");
   const totalPostsCountByPostsPerPage = Math.ceil(
@@ -63,6 +67,10 @@ function App() {
 
   const getResults = (data) => {
     return data?.results;
+  };
+
+  const onHandleChange = (e) => {
+    setInputFieldValue(e.target.value);
   };
 
   const sortColumn = (sortKey) => {
@@ -158,69 +166,32 @@ function App() {
 
   return (
     <Fragment>
-      <div>
-        <Header />
-        <div className={"search-container"}>
-          <input
-            id="search"
-            placeholder="Search Database..."
-            value={inputFieldValue}
-            onChange={(e) => setInputFieldValue(e.target.value)}
-          />
-        </div>
+      <Header />
+      <SearchInput
+        inputFieldValue={inputFieldValue}
+        onHandleChange={(e) => onHandleChange(e)}
+      />
+      <CheckBoxFilter
+        defaultFilterKeys={defaultFilterKeys}
+        visibleColumns={visibleColumns}
+        handleCheckboxChange={handleCheckboxChange}
+      />
+      <Table
+        defaultFilterKeys={defaultFilterKeys}
+        visibleColumns={visibleColumns}
+        sortColumn={sortColumn}
+        getFilteredRow={getFilteredRow}
+        results={results}
+        inputFieldValue={inputFieldValue}
+      />
 
-        <div className="form-control-container">
-          {defaultFilterKeys?.map((obj, id) => {
-            return (
-              <label className={"form-control"} key={id} style={{ marginRight: "10px" }}>
-                <input
-                  key={id}
-                  type="checkbox"
-                  checked={visibleColumns[obj.id]}
-                  onChange={() => handleCheckboxChange(obj.id)}
-                />
-                {obj.label}
-              </label>
-            );
-          })}
-        </div>
-        <table className="">
-          <thead className="">
-            <tr>
-              {defaultFilterKeys.map(
-                (column) =>
-                  visibleColumns[column.id] && (
-                    <th key={column.id} onClick={() => sortColumn(column.id)}>
-                      {column.label}
-                    </th>
-                  )
-              )}
-            </tr>
-          </thead>
-          <tbody>
-            {getFilteredRow(results, inputFieldValue)?.map((row) => (
-              <tr key={row.id}>
-                {defaultFilterKeys.map(
-                  (column) => {
-
-                    {console.log(row[column.id] === "brown")}
-                      return visibleColumns[column.id] && (
-                        <td key={column.id}><span className="pill">{row[column.id]}</span></td>
-                      )
-                  }
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <Pagination
-          totalPostsCount={totalPostsCountByPostsPerPage}
-          onHandlePageChange={handlePageChange}
-          currentPage={currentPage}
-          siblings={1}
-          returnPaginationRange={returnPaginationRange}
-        />
-      </div>
+      <Pagination
+        totalPostsCount={totalPostsCountByPostsPerPage}
+        onHandlePageChange={handlePageChange}
+        currentPage={currentPage}
+        siblings={1}
+        returnPaginationRange={returnPaginationRange}
+      />
     </Fragment>
   );
 }

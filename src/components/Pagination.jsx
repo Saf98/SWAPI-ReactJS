@@ -24,14 +24,12 @@ const Pagination = ({
         &lsaquo;
       </button>
       {array.map((value, id) => {
+        const isElipsis = value === "...";
+        const isActive = value === currentPage ? "active" : "page-button";
         return (
           <button
             key={id}
-            className={
-              value === currentPage
-                ? "active"
-                : "page-button"
-            }
+            className={isElipsis ? "elipsis" : isActive}
             onClick={() => onHandlePageChange(value)}
           >
             {value}

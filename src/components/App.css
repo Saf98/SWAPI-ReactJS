@@ -15,7 +15,7 @@ input[type="checkbox"] {
 }
 
 body {
-  background-color: #0f071f;
+  background-color: #b089ff;
 }
 
 .container {
@@ -53,6 +53,7 @@ input#search::placeholder {
   margin: 0 auto;
   padding: 1px 10px;
   max-width: 700px;
+  flex-wrap: nowrap;
   /* gap: 4px; */
 }
 
@@ -108,8 +109,14 @@ input[type="checkbox"]:focus {
 }
 
 .buttons-container {
-  margin-top: 20px;
+  /* background-color: #dddddd; */
+  max-width: 700px;
+  position: relative;
+  bottom: 0;
+  margin: 0 auto;
+  padding: 4px;
   display: flex;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -151,6 +158,30 @@ td {
   color: #ffffff;
   text-align: left;
   padding: 14px;
+}
+
+th {
+  position: relative;
+}
+
+.arrow {
+  position: relative;
+  /* right: 0;
+  bottom: 0; */
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 
 span.pill-blonde {
@@ -206,9 +237,12 @@ tr:nth-child(even) {
 } */
 
 @media screen and (min-width: 768px) {
-  table {
+  table.results-table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 50%;
+    margin: 0 auto;
+    margin-top: 10px;
+    max-width: 700px;
+
   }
 }
