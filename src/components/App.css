@@ -54,7 +54,6 @@ input#search::placeholder {
   padding: 1px 10px;
   max-width: 700px;
   flex-wrap: nowrap;
-  /* gap: 4px; */
 }
 
 .form-control {
@@ -163,26 +162,24 @@ td {
 
 th {
   position: relative;
+  background-color: #dddddd;
+  width: auto;
 }
 
-.arrow {
+span.sort {
+  position: absolute;
+  right: 0;
+}
+
+span.sort > button {
+  width: 20px;
+}
+
+.loading {
   position: relative;
-  /* right: 0;
-  bottom: 0; */
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-
-.up {
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-}
-
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
+  font-size: 24px;
+  margin: 0 auto;
+  max-width: 200px;
 }
 
 .pill {
