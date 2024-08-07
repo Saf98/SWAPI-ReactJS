@@ -1,9 +1,12 @@
 import "./App.css";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useMemo } from "react";
 import { getData } from "../services/getData";
 import Header from "./Header";
 import Pagination from "./Pagination";
 import _ from "lodash";
+import Table from "./Table";
+import SearchInput from "./SearchInput";
+import CheckBoxFilter from "./CheckBoxFilter";
 
 const getFilteredRow = (rows, filteredKey) => {
   return rows.filter((row) =>
@@ -36,13 +39,16 @@ const getNextSortingKeyDirection = (sortingDirection) => {
 };
 
 function App() {
-  let defaultFilterKeys = [
-    { id: "name", label: "Name" },
-    { id: "gender", label: "Gender" },
-    { id: "birth_year", label: "DoB" },
-    { id: "hair_color", label: "Hair Colour" },
-    { id: "eye_color", label: "Eye Colour" },
-  ];
+  let defaultFilterKeys = useMemo(
+    () => [
+      { id: "name", label: "Name" },
+      { id: "gender", label: "Gender" },
+      { id: "birth_year", label: "DoB" },
+      { id: "hair_color", label: "Hair Colour" },
+      { id: "eye_color", label: "Eye Colour" },
+    ],
+    []
+  );
   const [visibleColumns, setVisibleColumns] = useState({
     name: true,
     age: true,
@@ -55,6 +61,7 @@ function App() {
   const [sortingDirections, setSortingDirections] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
+  // TODO Fix initial buttons
   const [totalPostsCount, setTotalPostsCount] = useState(0);
   const [inputFieldValue, setInputFieldValue] = useState("");
   const totalPostsCountByPostsPerPage = Math.ceil(
@@ -63,6 +70,10 @@ function App() {
 
   const getResults = (data) => {
     return data?.results;
+  };
+
+  const onHandleChange = (e) => {
+    setInputFieldValue(e.target.value);
   };
 
   const sortColumn = (sortKey) => {
@@ -82,17 +93,28 @@ function App() {
   useEffect(() => {
     getData(currentPage).then((characters) => {
       const data = getResults(characters);
-      setResults(data);
-      setTotalPostsCount(characters?.count);
+      if (Array.isArray(data)) {
+        setResults(data);
+        setTotalPostsCount(characters?.count || 0); // Ensure count is a number
+      } else {
+        console.error("Data is not an array:", data);
+      }
       let ourSortingDirections = {};
       for (const header of defaultFilterKeys) {
         ourSortingDirections[header] = "UNSORTED";
       }
       setSortingDirections(ourSortingDirections);
     });
-  }, [currentPage]);
+  }, [currentPage, defaultFilterKeys]);
 
-  //wrap defaultFilterKeys in useMemo to avoid re-renders
+  useEffect(() => {
+    if (
+      currentPage > totalPostsCountByPostsPerPage &&
+      totalPostsCountByPostsPerPage > 0
+    ) {
+      setCurrentPage(totalPostsCountByPostsPerPage);
+    }
+  }, [currentPage, totalPostsCountByPostsPerPage]);
 
   const handleCheckboxChange = (key) => {
     setVisibleColumns((prevVisibleColumns) => ({
@@ -149,8 +171,6 @@ function App() {
     } else if (value === "&raquo;") {
       setCurrentPage(totalPostsCountByPostsPerPage);
     } else if (value === "..." || value === " ...") {
-      // Ignore ellipsis clicks or handle as needed
-      // Optionally, you can add logic to move closer to the ellipsis range
     } else {
       setCurrentPage(value);
     }
@@ -158,68 +178,32 @@ function App() {
 
   return (
     <Fragment>
-      <div className={"bg-violet-950"}>
-        <Header />
-        <div className={"flex flex-row justify-center py-20"}>
-          <input
-            className={
-              "placeholder:text-2xl w-full placeholder:text-slate-400 font-bold block bg-white w-96"
-            }
-            placeholder="Search Database..."
-            value={inputFieldValue}
-            onChange={(e) => setInputFieldValue(e.target.value)}
-          />
-        </div>
+      <Header />
+      <SearchInput
+        inputFieldValue={inputFieldValue}
+        onHandleChange={(e) => onHandleChange(e)}
+      />
+      <CheckBoxFilter
+        defaultFilterKeys={defaultFilterKeys}
+        visibleColumns={visibleColumns}
+        handleCheckboxChange={handleCheckboxChange}
+      />
+      <Table
+        defaultFilterKeys={defaultFilterKeys}
+        visibleColumns={visibleColumns}
+        sortColumn={sortColumn}
+        getFilteredRow={getFilteredRow}
+        results={results}
+        inputFieldValue={inputFieldValue}
+      />
 
-        <div className="buttons-container">
-          {defaultFilterKeys?.map((obj, id) => {
-            return (
-              <label key={id} style={{ marginRight: "10px" }}>
-                <input
-                  key={id}
-                  type="checkbox"
-                  checked={visibleColumns[obj.id]}
-                  onChange={() => handleCheckboxChange(obj.id)}
-                />
-                {obj.label}
-              </label>
-            );
-          })}
-        </div>
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              {defaultFilterKeys.map(
-                (column) =>
-                  visibleColumns[column.id] && (
-                    <th key={column.id} onClick={() => sortColumn(column.id)}>
-                      {column.label}
-                    </th>
-                  )
-              )}
-            </tr>
-          </thead>
-          <tbody>
-            {getFilteredRow(results, inputFieldValue)?.map((row) => (
-              <tr key={row.id}>
-                {defaultFilterKeys.map(
-                  (column) =>
-                    visibleColumns[column.id] && (
-                      <td key={column.id}>{row[column.id]}</td>
-                    )
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <Pagination
-          totalPostsCount={totalPostsCountByPostsPerPage}
-          onHandlePageChange={handlePageChange}
-          currentPage={currentPage}
-          siblings={1}
-          returnPaginationRange={returnPaginationRange}
-        />
-      </div>
+      <Pagination
+        totalPostsCount={totalPostsCountByPostsPerPage}
+        onHandlePageChange={handlePageChange}
+        currentPage={currentPage}
+        siblings={1}
+        returnPaginationRange={returnPaginationRange}
+      />
     </Fragment>
   );
 }
