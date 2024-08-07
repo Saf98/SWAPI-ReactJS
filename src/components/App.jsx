@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useMemo } from "react";
 import { getData } from "../services/getData";
 import Header from "./Header";
 import Pagination from "./Pagination";
@@ -39,13 +39,16 @@ const getNextSortingKeyDirection = (sortingDirection) => {
 };
 
 function App() {
-  let defaultFilterKeys = [
-    { id: "name", label: "Name" },
-    { id: "gender", label: "Gender" },
-    { id: "birth_year", label: "DoB" },
-    { id: "hair_color", label: "Hair Colour" },
-    { id: "eye_color", label: "Eye Colour" },
-  ];
+  let defaultFilterKeys = useMemo(
+    () => [
+      { id: "name", label: "Name" },
+      { id: "gender", label: "Gender" },
+      { id: "birth_year", label: "DoB" },
+      { id: "hair_color", label: "Hair Colour" },
+      { id: "eye_color", label: "Eye Colour" },
+    ],
+    []
+  );
   const [visibleColumns, setVisibleColumns] = useState({
     name: true,
     age: true,
@@ -58,7 +61,7 @@ function App() {
   const [sortingDirections, setSortingDirections] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
-  // TODO Fix initial buttons 
+  // TODO Fix initial buttons
   const [totalPostsCount, setTotalPostsCount] = useState(0);
   const [inputFieldValue, setInputFieldValue] = useState("");
   const totalPostsCountByPostsPerPage = Math.ceil(
@@ -90,17 +93,28 @@ function App() {
   useEffect(() => {
     getData(currentPage).then((characters) => {
       const data = getResults(characters);
-      setResults(data);
-      setTotalPostsCount(characters?.count);
+      if (Array.isArray(data)) {
+        setResults(data);
+        setTotalPostsCount(characters?.count || 0); // Ensure count is a number
+      } else {
+        console.error("Data is not an array:", data);
+      }
       let ourSortingDirections = {};
       for (const header of defaultFilterKeys) {
         ourSortingDirections[header] = "UNSORTED";
       }
       setSortingDirections(ourSortingDirections);
     });
-  }, [currentPage]);
+  }, [currentPage, defaultFilterKeys]);
 
-  //wrap defaultFilterKeys in useMemo to avoid re-renders
+  useEffect(() => {
+    if (
+      currentPage > totalPostsCountByPostsPerPage &&
+      totalPostsCountByPostsPerPage > 0
+    ) {
+      setCurrentPage(totalPostsCountByPostsPerPage);
+    }
+  }, [currentPage, totalPostsCountByPostsPerPage]);
 
   const handleCheckboxChange = (key) => {
     setVisibleColumns((prevVisibleColumns) => ({
@@ -157,8 +171,6 @@ function App() {
     } else if (value === "&raquo;") {
       setCurrentPage(totalPostsCountByPostsPerPage);
     } else if (value === "..." || value === " ...") {
-      // Ignore ellipsis clicks or handle as needed
-      // Optionally, you can add logic to move closer to the ellipsis range
     } else {
       setCurrentPage(value);
     }

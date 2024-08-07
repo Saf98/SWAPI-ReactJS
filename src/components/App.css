@@ -144,6 +144,7 @@ input[type="checkbox"]:focus {
   border: 0;
   background-color: transparent;
   color: #3943fb;
+  cursor:default;
 }
 
 table {
@@ -184,31 +185,81 @@ th {
   -webkit-transform: rotate(45deg);
 }
 
-span.pill-blonde {
-  background-color: #debe99;
+.pill {
   margin: 0;
   padding: 0;
   padding: 5px;
-  border: 1px #debe99 solid;
-  border-radius: 5px;
-}
-span.pill-brown {
-  background-color: #241c11;
-  margin: 0;
-  padding: 0;
-  padding: 5px;
-  border: 1px #241c11 solid;
-  border-radius: 5px;
-}
-span.pill-blue {
-  background-color: #2e536f;
-  margin: 0;
-  padding: 0;
-  padding: 5px;
-  border: 1px #2e536f solid;
   border-radius: 5px;
 }
 
+.blond {
+  background-color: #debe99;
+  color: #000000;
+  border: 1px #debe99 solid;
+}
+.brown {
+  background-color: #241c11;
+  border: 1px #241c11 solid;
+}
+.blue {
+  background-color: #2e536f;
+  border: 1px #2e536f solid;
+}
+.black {
+  background-color: #000000;
+  border: 1px #000000 solid;
+}
+.grey {
+  background-color: grey;
+  border: 1px grey solid;
+}
+.white {
+  background-color: white;
+  color: #000000;
+  border: 1px white solid;
+}
+.auburn {
+  background-color: grey;
+  border: 1px grey solid;
+}
+.blue-gray {
+  background-color: rgb(4, 80, 120);
+  border: 1px rgb(4, 80, 120) solid;
+}
+.yellow {
+  background-color: yellow;
+  color: #000000;
+  border: 1px yellow solid;
+}
+.red {
+  background-color: red;
+  border: 1px red solid;
+}
+.orange {
+  background-color: orange;
+  color: #000000;
+  border: 1px orange solid;
+}
+.hazel {
+  background-color: olive;
+  border: 1px olive solid;
+}
+.pink {
+  background-color: pink;
+  border: 1px pink solid;
+}
+.green-yellow {
+  background-color: rgb(188, 191, 19);
+  border: 1px rgb(188, 191, 19) solid;
+}
+.red-blue {
+  background-color: purple;
+  border: 1px purple solid;
+}
+.gold {
+  background-color: gold;
+  border: 1px gold solid;
+}
 
 th {
   background-color: #171717;
@@ -243,6 +294,5 @@ tr:nth-child(even) {
     margin: 0 auto;
     margin-top: 10px;
     max-width: 700px;
-
   }
 }
