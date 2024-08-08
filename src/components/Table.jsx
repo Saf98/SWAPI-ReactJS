@@ -7,8 +7,8 @@ const Table = ({
   getFilteredRow,
   results,
   inputFieldValue,
+  sortingDirections,
 }) => {
-  // Memoize the filtered rows
   const filteredRows = useMemo(() => {
     return getFilteredRow(results, inputFieldValue);
   }, [getFilteredRow, results, inputFieldValue]);
@@ -58,13 +58,11 @@ const Table = ({
     }
   };
 
-  // Memoize the table rows rendering
   const tableRows = useMemo(() => {
     return filteredRows?.map((row) => (
       <tr key={row.id}>
         {defaultFilterKeys.map((column) => {
           const className = getClassName(row[column.id]);
-
           return (
             visibleColumns[column.id] && (
               <td key={column.id}>
@@ -77,22 +75,39 @@ const Table = ({
     ));
   }, [filteredRows, defaultFilterKeys, visibleColumns]);
 
+  const getClassNamesFor = (sortKey) => {
+    switch (sortKey) {
+      case "UNSORTED":
+        return "unsorted";
+      case "ASC":
+        return "ascending";
+      case "DESC":
+        return "descending";
+      default:
+        return "unsorted";
+    }
+  };
+
   return (
     <Fragment>
       <table className="results-table">
-        <thead>
+        <thead align="left">
           <tr>
             {defaultFilterKeys.map(
               (column) =>
                 visibleColumns[column.id] && (
-                  <th key={column.id}>
-                    {column.label}
-                    <span className="sort">
-                      <button onClick={() => sortColumn(column.id)}>
-                        &#8597;
-                      </button>
-                    </span>
-                  </th>
+                  <>
+                    <th key={column.id}>
+                      {column.label}
+                      <button
+                        key={column.id}
+                        className={`${getClassNamesFor(
+                          sortingDirections?.name
+                        )} sort`}
+                        onClick={() => sortColumn(column.id)}
+                      ></button>
+                    </th>
+                  </>
                 )
             )}
           </tr>
