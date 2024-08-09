@@ -2,6 +2,14 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #030423;
+  padding: 20px;
+  text-align: center;
 }
 
 input[type="checkbox"] {
@@ -143,13 +151,34 @@ input[type="checkbox"]:focus {
   border: 0;
   background-color: transparent;
   color: #3943fb;
-  cursor:default;
+  cursor: default;
 }
 
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
+  border-spacing: 0;
+  min-width: 350px;
   width: 100%;
+}
+
+/* top-left border-radius */
+table tr:first-child th:first-child {
+  border-top-left-radius: 6px;
+}
+
+/* top-right border-radius */
+table tr:first-child th:last-child {
+  border-top-right-radius: 6px;
+}
+
+/* bottom-left border-radius */
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+
+/* bottom-right border-radius */
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 6px;
 }
 
 td {
@@ -160,19 +189,34 @@ td {
   padding: 14px;
 }
 
+thead {
+  border-radius: 15px;
+}
+
 th {
   position: relative;
   background-color: #dddddd;
   width: auto;
+  padding: 14px;
 }
 
-span.sort {
-  position: absolute;
-  right: 0;
+.sort {
+  border: 0;
+  background-color: transparent;
+  padding: 2px;
 }
 
-span.sort > button {
-  width: 20px;
+
+.unsorted::after {
+
+  content: "\2B81";
+}
+.ascending::after {
+
+  content: "\2B85";
+}
+.descending::after {
+  content: "\2B87";
 }
 
 .loading {
@@ -258,13 +302,6 @@ span.sort > button {
   border: 1px gold solid;
 }
 
-th {
-  background-color: #171717;
-  color: #ffc700;
-  text-align: left;
-  padding: 14px;
-}
-
 tr:nth-child(even) {
   background-color: #dddddd;
 }
@@ -276,17 +313,9 @@ tr:nth-child(even) {
   margin-top: 10px;
 }
 
-/* @media screen and (min-width: 768px) {
-  .row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-} */
-
 @media screen and (min-width: 768px) {
   table.results-table {
-    font-family: arial, sans-serif;
+    /* font-family: arial, sans-serif; */
     border-collapse: collapse;
     margin: 0 auto;
     margin-top: 10px;

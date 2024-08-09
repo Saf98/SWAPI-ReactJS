@@ -195,6 +195,7 @@ function App() {
         getFilteredRow={getFilteredRow}
         results={results}
         inputFieldValue={inputFieldValue}
+        sortingDirections={sortingDirections}
       />
 
       <Pagination
