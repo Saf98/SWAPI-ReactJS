@@ -87,7 +87,7 @@ const Table = ({
         return "unsorted";
     }
   };
-
+//TODO button only sorts based on name id?
   return (
     <Fragment>
       <table className="results-table">
@@ -97,15 +97,14 @@ const Table = ({
               (column) =>
                 visibleColumns[column.id] && (
                   <>
-                    <th key={column.id}>
+                    <th key={column.id}
+                    onClick={() => sortColumn(column.id)}>
                       {column.label}
-                      <button
+                      {/* <button
                         key={column.id}
-                        className={`${getClassNamesFor(
-                          sortingDirections?.name
-                        )} sort`}
-                        onClick={() => sortColumn(column.id)}
-                      ></button>
+                        className={"sort"}
+                        
+                      ></button> */}
                     </th>
                   </>
                 )
