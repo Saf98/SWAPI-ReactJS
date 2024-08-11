@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/SWAPI-ReactJS/static/css/main.220402ef.css",
-    "main.js": "/SWAPI-ReactJS/static/js/main.4198c2b2.js",
+    "main.css": "/SWAPI-ReactJS/static/css/main.d8464fd7.css",
+    "main.js": "/SWAPI-ReactJS/static/js/main.8f6ed42e.js",
     "index.html": "/SWAPI-ReactJS/index.html",
-    "main.220402ef.css.map": "/SWAPI-ReactJS/static/css/main.220402ef.css.map",
-    "main.4198c2b2.js.map": "/SWAPI-ReactJS/static/js/main.4198c2b2.js.map"
+    "main.d8464fd7.css.map": "/SWAPI-ReactJS/static/css/main.d8464fd7.css.map",
+    "main.8f6ed42e.js.map": "/SWAPI-ReactJS/static/js/main.8f6ed42e.js.map"
   },
   "entrypoints": [
-    "static/css/main.220402ef.css",
-    "static/js/main.4198c2b2.js"
+    "static/css/main.d8464fd7.css",
+    "static/js/main.8f6ed42e.js"
   ]
 }
