@@ -47,6 +47,7 @@ input#search {
   border: none;
   border-radius: 3px;
   margin: 0;
+  font-family: 'Aurebesh_english-Regular';
 }
 
 input#search::placeholder {
@@ -76,10 +77,6 @@ input#search::placeholder {
   gap: 8px;
 }
 
-label {
-  color: #ffffff;
-}
-
 input[type="checkbox"] {
   appearance: none;
   background-color: #fff;
@@ -93,6 +90,12 @@ input[type="checkbox"] {
   transform: translateY(-0.075em);
   display: grid;
   place-content: center;
+}
+
+label.form-control {
+  font-family: 'SceletAF';
+  font-size: 12px;
+  color: #3943fb;
 }
 
 input[type="checkbox"]::before {
@@ -125,7 +128,7 @@ input[type="checkbox"]:focus {
   padding: 4px;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 10px;  
 }
 
 .page-button {
@@ -136,6 +139,7 @@ input[type="checkbox"]:focus {
   background-color: #3943fb;
   color: #ffffff;
   cursor: pointer;
+  font-family: 'Aurebesh_english-Regular';
 }
 
 .active {
@@ -144,6 +148,7 @@ input[type="checkbox"]:focus {
   border: 0;
   border-radius: 5px;
   background-color: #030423;
+  font-family: 'Aurebesh_english-Regular';
   color: #ffffff;
   cursor: pointer;
 }
@@ -153,6 +158,7 @@ input[type="checkbox"]:focus {
   height: 40px;
   border: 0;
   background-color: transparent;
+  font-family: 'Aurebesh_english-Regular';
   color: #3943fb;
   cursor: default;
 }
@@ -162,6 +168,8 @@ table {
   border-spacing: 0;
   width: 100%;
   overflow-x: scroll;
+  font-family: 'SceletAF';
+  font-weight: 400;
 }
 
 /* top-left border-radius */
@@ -185,10 +193,18 @@ table tr:last-child td:last-child {
 }
 
 td {
-  background-color: #3e3e3e;
   color: #ffffff;
   text-align: left;
   padding: 14px;
+  font-size: 12px;
+  font-family: 'SceletAF';
+}
+
+tr:nth-child(even) {
+  background-color: #0e0e0d73;
+}
+tr:nth-child(odd) {
+  background-color: #0e0e0d;
 }
 
 thead {
@@ -197,11 +213,13 @@ thead {
 
 th {
   position: relative;
-  background-color: #dddddd;
+  background-color: rgb(5, 4, 36);
+  color: #ffffff;
   width: auto;
   text-align: left;
   padding: 14px;
   font-weight: 400;
+  font-size: 12px;
 }
 
 .sort {
@@ -209,7 +227,6 @@ th {
   background-color: transparent;
   padding: 2px;
 }
-
 
 .unsorted::after {
   content: "\2B81";
@@ -302,10 +319,6 @@ th {
 .gold {
   background-color: gold;
   border: 1px gold solid;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
 }
 
 .row {
