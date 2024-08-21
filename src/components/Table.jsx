@@ -75,19 +75,19 @@ const Table = ({
     ));
   }, [filteredRows, defaultFilterKeys, visibleColumns]);
 
-  const getClassNamesFor = (sortKey) => {
-    switch (sortKey) {
+  const getClassNamesFor = (sortKey, sortingDirections) => {
+    switch (sortingDirections[sortKey]) {
       case "UNSORTED":
-        return "unsorted";
+        return "g";
       case "ASC":
-        return "ascending";
+        return "a";
       case "DESC":
-        return "descending";
+        return "s";
       default:
-        return "unsorted";
+        return "g";
     }
   };
-//TODO button only sorts based on name id?
+
   return (
     <Fragment>
       <table className="results-table">
@@ -97,14 +97,16 @@ const Table = ({
               (column) =>
                 visibleColumns[column.id] && (
                   <>
-                    <th key={column.id}
-                    onClick={() => sortColumn(column.id)}>
+                    <th key={column.id}>
                       {column.label}
-                      {/* <button
+                      <button
+                        onClick={() => sortColumn(column.id)}
                         key={column.id}
                         className={"sort"}
-                        
-                      ></button> */}
+                        style={{fontFamily: 'AttackPosition-Symbols', fontWeight: "normal", fontStyle: "normal"}}
+                      >
+                        {getClassNamesFor(column.id, sortingDirections)}
+                      </button>
                     </th>
                   </>
                 )
