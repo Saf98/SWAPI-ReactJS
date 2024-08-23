@@ -98,15 +98,34 @@ const Table = ({
                 visibleColumns[column.id] && (
                   <>
                     <th key={column.id}>
-                      {column.label}
-                      <button
+                      <div
                         onClick={() => sortColumn(column.id)}
-                        key={column.id}
-                        className={"sort"}
-                        style={{fontFamily: 'AttackPosition-Symbols', fontWeight: "normal", fontStyle: "normal"}}
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
                       >
-                        {getClassNamesFor(column.id, sortingDirections)}
-                      </button>
+                        <span>{column.label}</span>
+                        <button
+                          key={column.id}
+                          style={{
+                            fontFamily: "AttackPosition-Symbols",
+                            fontWeight: "normal",
+                            fontStyle: "normal",
+                            fontSize: "14px",
+                            backgroundColor: "transparent",
+                            border: 0,
+                            padding: 0,
+                            color: "white",
+                            display: "inline-block",
+                            marginLeft: "10px",
+                          }}
+                        >
+                          {getClassNamesFor(column.id, sortingDirections)}
+                        </button>
+                      </div>
                     </th>
                   </>
                 )
