@@ -1,5 +1,3 @@
-import { useRef, forwardRef } from "react";
-
 export const getData = async (currentPage) => {
   const url = `https://swapi.dev/api/people/?page=${currentPage}`;
   const response = await fetch(url, {

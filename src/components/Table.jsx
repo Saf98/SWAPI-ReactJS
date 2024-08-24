@@ -75,19 +75,19 @@ const Table = ({
     ));
   }, [filteredRows, defaultFilterKeys, visibleColumns]);
 
-  const getClassNamesFor = (sortKey) => {
-    switch (sortKey) {
+  const getClassNamesFor = (sortKey, sortingDirections) => {
+    switch (sortingDirections[sortKey]) {
       case "UNSORTED":
-        return "unsorted";
+        return "g";
       case "ASC":
-        return "ascending";
+        return "a";
       case "DESC":
-        return "descending";
+        return "s";
       default:
-        return "unsorted";
+        return "g";
     }
   };
-//TODO button only sorts based on name id?
+
   return (
     <Fragment>
       <table className="results-table">
@@ -97,14 +97,35 @@ const Table = ({
               (column) =>
                 visibleColumns[column.id] && (
                   <>
-                    <th key={column.id}
-                    onClick={() => sortColumn(column.id)}>
-                      {column.label}
-                      {/* <button
-                        key={column.id}
-                        className={"sort"}
-                        
-                      ></button> */}
+                    <th key={column.id}>
+                      <div
+                        onClick={() => sortColumn(column.id)}
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <span>{column.label}</span>
+                        <button
+                          key={column.id}
+                          style={{
+                            fontFamily: "AttackPosition-Symbols",
+                            fontWeight: "normal",
+                            fontStyle: "normal",
+                            fontSize: "14px",
+                            backgroundColor: "transparent",
+                            border: 0,
+                            padding: 0,
+                            color: "white",
+                            display: "inline-block",
+                            marginLeft: "10px",
+                          }}
+                        >
+                          {getClassNamesFor(column.id, sortingDirections)}
+                        </button>
+                      </div>
                     </th>
                   </>
                 )

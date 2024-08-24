@@ -95,7 +95,7 @@ function App() {
       const data = getResults(characters);
       if (Array.isArray(data)) {
         setResults(data);
-        setTotalPostsCount(characters?.count || 0); // Ensure count is a number
+        setTotalPostsCount(characters?.count || 0);
       } else {
         console.error("Data is not an array:", data);
       }

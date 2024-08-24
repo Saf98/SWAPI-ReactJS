@@ -10,6 +10,7 @@
   background-color: #030423;
   padding: 20px;
   text-align: center;
+  width: 100%;
 }
 
 input[type="checkbox"] {
@@ -23,18 +24,18 @@ input[type="checkbox"] {
 }
 
 body {
-  background-color: #b089ff;
+  background-color: #242424;
 }
 
 .container {
   margin: 0 auto;
   padding: 10px;
+  max-width: 1000px;
 }
 
 .search-container {
   margin: 0 auto;
   max-width: 700px;
-  padding: 16px 10px;
 }
 
 input#search {
@@ -46,6 +47,7 @@ input#search {
   border: none;
   border-radius: 3px;
   margin: 0;
+  font-family: 'Aurebesh_english-Regular';
 }
 
 input#search::placeholder {
@@ -75,10 +77,6 @@ input#search::placeholder {
   gap: 8px;
 }
 
-label {
-  color: #ffffff;
-}
-
 input[type="checkbox"] {
   appearance: none;
   background-color: #fff;
@@ -92,6 +90,12 @@ input[type="checkbox"] {
   transform: translateY(-0.075em);
   display: grid;
   place-content: center;
+}
+
+label.form-control {
+  font-family: 'SceletAF';
+  font-size: 12px;
+  color: #3943fb;
 }
 
 input[type="checkbox"]::before {
@@ -124,7 +128,7 @@ input[type="checkbox"]:focus {
   padding: 4px;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 10px;  
 }
 
 .page-button {
@@ -134,6 +138,8 @@ input[type="checkbox"]:focus {
   border-radius: 5px;
   background-color: #3943fb;
   color: #ffffff;
+  cursor: pointer;
+  font-family: 'Aurebesh_english-Regular';
 }
 
 .active {
@@ -142,7 +148,9 @@ input[type="checkbox"]:focus {
   border: 0;
   border-radius: 5px;
   background-color: #030423;
+  font-family: 'Aurebesh_english-Regular';
   color: #ffffff;
+  cursor: pointer;
 }
 
 .elipsis {
@@ -150,6 +158,7 @@ input[type="checkbox"]:focus {
   height: 40px;
   border: 0;
   background-color: transparent;
+  font-family: 'Aurebesh_english-Regular';
   color: #3943fb;
   cursor: default;
 }
@@ -157,8 +166,10 @@ input[type="checkbox"]:focus {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  min-width: 350px;
   width: 100%;
+  overflow-x: scroll;
+  font-family: 'SceletAF';
+  font-weight: 400;
 }
 
 /* top-left border-radius */
@@ -182,11 +193,18 @@ table tr:last-child td:last-child {
 }
 
 td {
-  /* border: 1px solid #dddddd; */
-  background-color: #3e3e3e;
   color: #ffffff;
   text-align: left;
   padding: 14px;
+  font-size: 12px;
+  font-family: 'SceletAF';
+}
+
+tr:nth-child(even) {
+  background-color: #0e0e0d73;
+}
+tr:nth-child(odd) {
+  background-color: #0e0e0d;
 }
 
 thead {
@@ -195,24 +213,25 @@ thead {
 
 th {
   position: relative;
-  background-color: #dddddd;
+  background-color: rgb(5, 4, 36);
+  color: #ffffff;
   width: auto;
+  text-align: left;
   padding: 14px;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 .sort {
   border: 0;
-  background-color: transparent;
+  background-color: white;
   padding: 2px;
 }
 
-
 .unsorted::after {
-
   content: "\2B81";
 }
 .ascending::after {
-
   content: "\2B85";
 }
 .descending::after {
@@ -229,7 +248,7 @@ th {
 .pill {
   margin: 0;
   padding: 0;
-  padding: 5px;
+  padding: 2px;
   border-radius: 5px;
 }
 
@@ -239,8 +258,8 @@ th {
   border: 1px #debe99 solid;
 }
 .brown {
-  background-color: #241c11;
-  border: 1px #241c11 solid;
+  background-color: #2f1d04;
+  border: 1px #2f1d04 solid;
 }
 .blue {
   background-color: #2e536f;
@@ -302,10 +321,6 @@ th {
   border: 1px gold solid;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -315,10 +330,14 @@ tr:nth-child(even) {
 
 @media screen and (min-width: 768px) {
   table.results-table {
-    /* font-family: arial, sans-serif; */
     border-collapse: collapse;
     margin: 0 auto;
     margin-top: 10px;
     max-width: 700px;
+    overflow: scroll;
+  }
+
+  .search-container {
+    width: 100%;
   }
 }

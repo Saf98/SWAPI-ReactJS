@@ -1,6 +1,6 @@
 const SearchInput = ({ onHandleChange, inputFieldValue }) => {
   return (
-    <div className={"search-container"}>
+    <div className="search-container container">
       <input
         id="search"
         placeholder="Search Database..."

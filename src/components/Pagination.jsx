@@ -10,7 +10,7 @@ const Pagination = ({
   let array = returnPaginationRange(totalPostsCount, currentPage, siblings);
 
   return (
-    <div className="buttons-container">
+    <div className="buttons-container container">
       <button
         className="page-button"
         onClick={() => onHandlePageChange("&laquo;")}
