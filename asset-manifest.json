@@ -1,13 +1,24 @@
 {
   "files": {
-    "main.css": "/SWAPI-ReactJS/static/css/main.220402ef.css",
-    "main.js": "/SWAPI-ReactJS/static/js/main.4198c2b2.js",
+    "main.css": "/SWAPI-ReactJS/static/css/main.47e70336.css",
+    "main.js": "/SWAPI-ReactJS/static/js/main.9c0a3561.js",
+    "static/media/SceletAFAurebesh.woff": "/SWAPI-ReactJS/static/media/SceletAFAurebesh.c35242cee879d0553291.woff",
+    "static/media/SceletAF.woff": "/SWAPI-ReactJS/static/media/SceletAF.452633656924f2487995.woff",
+    "static/media/SceletAFAurebesh.woff2": "/SWAPI-ReactJS/static/media/SceletAFAurebesh.9dfddbc8374958a7d711.woff2",
+    "static/media/SceletAF.woff2": "/SWAPI-ReactJS/static/media/SceletAF.db0729414aff632fc7db.woff2",
+    "static/media/Aurebesh_english-Regular.woff": "/SWAPI-ReactJS/static/media/Aurebesh_english-Regular.5495d7ebaf49b9971862.woff",
+    "static/media/Aurebesh_english-Regular.woff2": "/SWAPI-ReactJS/static/media/Aurebesh_english-Regular.4433239df09add8a7922.woff2",
+    "static/media/AttackPosition-Symbols.woff": "/SWAPI-ReactJS/static/media/AttackPosition-Symbols.c0cee1b02604e10c326f.woff",
+    "static/media/AttackPosition-Symbols.woff2": "/SWAPI-ReactJS/static/media/AttackPosition-Symbols.339916ec9563aa9692b4.woff2",
+    "static/media/AttackPosition-OuterButtons.woff": "/SWAPI-ReactJS/static/media/AttackPosition-OuterButtons.a57b7affdfd0494d027c.woff",
+    "static/media/AttackPosition-Buttons.woff": "/SWAPI-ReactJS/static/media/AttackPosition-Buttons.f53ed0a8e961ea788289.woff",
+    "static/media/AttackPosition-Buttons.woff2": "/SWAPI-ReactJS/static/media/AttackPosition-Buttons.efc05d90f80d66fc3297.woff2",
     "index.html": "/SWAPI-ReactJS/index.html",
-    "main.220402ef.css.map": "/SWAPI-ReactJS/static/css/main.220402ef.css.map",
-    "main.4198c2b2.js.map": "/SWAPI-ReactJS/static/js/main.4198c2b2.js.map"
+    "main.47e70336.css.map": "/SWAPI-ReactJS/static/css/main.47e70336.css.map",
+    "main.9c0a3561.js.map": "/SWAPI-ReactJS/static/js/main.9c0a3561.js.map"
   },
   "entrypoints": [
-    "static/css/main.220402ef.css",
-    "static/js/main.4198c2b2.js"
+    "static/css/main.47e70336.css",
+    "static/js/main.9c0a3561.js"
   ]
 }
