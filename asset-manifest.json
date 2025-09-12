@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SWAPI-ReactJS/static/css/main.47e70336.css",
-    "main.js": "/SWAPI-ReactJS/static/js/main.9a65b894.js",
+    "main.js": "/SWAPI-ReactJS/static/js/main.b60aac09.js",
     "static/media/SceletAFAurebesh.woff": "/SWAPI-ReactJS/static/media/SceletAFAurebesh.c35242cee879d0553291.woff",
     "static/media/SceletAF.woff": "/SWAPI-ReactJS/static/media/SceletAF.452633656924f2487995.woff",
     "static/media/SceletAFAurebesh.woff2": "/SWAPI-ReactJS/static/media/SceletAFAurebesh.9dfddbc8374958a7d711.woff2",
@@ -15,10 +15,10 @@
     "static/media/AttackPosition-Buttons.woff2": "/SWAPI-ReactJS/static/media/AttackPosition-Buttons.efc05d90f80d66fc3297.woff2",
     "index.html": "/SWAPI-ReactJS/index.html",
     "main.47e70336.css.map": "/SWAPI-ReactJS/static/css/main.47e70336.css.map",
-    "main.9a65b894.js.map": "/SWAPI-ReactJS/static/js/main.9a65b894.js.map"
+    "main.b60aac09.js.map": "/SWAPI-ReactJS/static/js/main.b60aac09.js.map"
   },
   "entrypoints": [
     "static/css/main.47e70336.css",
-    "static/js/main.9a65b894.js"
+    "static/js/main.b60aac09.js"
   ]
 }
