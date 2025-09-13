@@ -1,70 +1,12 @@
-@font-face {
-  font-family: 'AttackPosition-Buttons';
-  src: url('../src/assets/fonts/AttackPosition/AttackPosition-Buttons.woff2') format('woff2'),
-      url('../src/assets/fonts/AttackPosition/AttackPosition-Buttons.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'AttackPosition-Symbols';
-  src: url('../src/assets/fonts/AttackPosition/AttackPosition-Symbols.woff2') format('woff2'),
-      url('../src/assets/fonts/AttackPosition/AttackPosition-Symbols.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'AttackPosition-OuterButtons';
-  src: url('../src/assets/fonts/AttackPosition/AttackPosition-OuterButtons.woff') format('woff2'),
-      url('../src/assets/fonts/AttackPosition/AttackPosition-OuterButtons.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Aurebesh_english-Regular';
-  src: url('../src/assets/fonts/Aurebesh/Aurebesh_english-Regular.woff2') format('woff2'),
-      url('../src/assets/fonts/Aurebesh/Aurebesh_english-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SceletAFAurebesh';
-  src: local('Scelet AF Aurebesh'), local('SceletAFAurebesh'),
-      url('../src/assets/fonts/Scelet/SceletAFAurebesh.woff2') format('woff2'),
-      url('../src/assets/fonts/Scelet/SceletAFAurebesh.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SceletAF';
-  src: local('Scelet AF'), local('SceletAF'),
-      url('../src/assets/fonts/Scelet/SceletAF.woff2') format('woff2'),
-      url('../src/assets/fonts/Scelet/SceletAF.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-
-
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
