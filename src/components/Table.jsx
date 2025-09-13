@@ -76,6 +76,7 @@ const Table = ({
 	}, [filteredRows, defaultFilterKeys, visibleColumns]);
 
 	const getClassNamesFor = (sortKey, sortingDirections) => {
+		//TODO fix sort buttons?
 		switch (sortingDirections[sortKey]) {
 			case "UNSORTED":
 				return "g";
