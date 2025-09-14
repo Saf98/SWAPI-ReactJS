@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from "react";
+import { Fragment, useMemo } from "react";
 
 const Table = ({
 	defaultFilterKeys,
@@ -59,8 +59,8 @@ const Table = ({
 	};
 
 	const tableRows = useMemo(() => {
-		return filteredRows?.map((row) => (
-			<tr key={row.id}>
+		return filteredRows?.map((row, id) => (
+			<tr key={id}>
 				{defaultFilterKeys.map((column) => {
 					const className = getClassName(row[column.id]);
 					return (
@@ -78,13 +78,13 @@ const Table = ({
 	const getClassNamesFor = (sortKey, sortingDirections) => {
 		switch (sortingDirections[sortKey]) {
 			case "UNSORTED":
-				return "g";
+				return <span className="sort-icon unsorted">↕</span>;
 			case "ASC":
-				return "a";
+				return <span className="sort-icon asc">▲</span>;
 			case "DESC":
-				return "s";
+				return <span className="sort-icon desc">▼</span>;
 			default:
-				return "g";
+				return <span className="sort-icon unsorted">↕</span>;
 		}
 	};
 
@@ -96,38 +96,33 @@ const Table = ({
 						{defaultFilterKeys.map(
 							(column) =>
 								visibleColumns[column.id] && (
-									<>
-										<th key={column.id}>
-											<div
-												onClick={() => sortColumn(column.id)}
+									<th key={column.id}>
+										<div
+											onClick={() => sortColumn(column.id)}
+											style={{
+												display: "flex",
+												flexWrap: "wrap",
+												flexDirection: "row",
+												justifyContent: "space-between",
+											}}
+										>
+											<span>{column.label}</span>
+											<button
+												key={column.id}
 												style={{
-													display: "flex",
-													flexWrap: "wrap",
-													flexDirection: "row",
-													justifyContent: "space-between",
+													fontSize: "14px",
+													backgroundColor: "transparent",
+													border: 0,
+													padding: 0,
+													color: "white",
+													display: "inline-block",
+													marginLeft: "10px",
 												}}
 											>
-												<span>{column.label}</span>
-												<button
-													key={column.id}
-													style={{
-														fontFamily: "AttackPosition-Symbols",
-														fontWeight: "normal",
-														fontStyle: "normal",
-														fontSize: "14px",
-														backgroundColor: "transparent",
-														border: 0,
-														padding: 0,
-														color: "white",
-														display: "inline-block",
-														marginLeft: "10px",
-													}}
-												>
-													{getClassNamesFor(column.id, sortingDirections)}
-												</button>
-											</div>
-										</th>
-									</>
+												{getClassNamesFor(column.id, sortingDirections)}
+											</button>
+										</div>
+									</th>
 								)
 						)}
 					</tr>

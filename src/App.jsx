@@ -1,12 +1,12 @@
 import "./App.css";
-import React, { Fragment, useState, useEffect, useMemo } from "react";
-import { getData } from "../services/getData";
-import Header from "./Header";
-import Pagination from "./Pagination";
+import { Fragment, useState, useEffect, useMemo } from "react";
+import { getData } from "./services/getData";
+import Header from "./components/Header";
+import Pagination from "./components/Pagination";
 import _ from "lodash";
-import Table from "./Table";
-import SearchInput from "./SearchInput";
-import CheckBoxFilter from "./CheckBoxFilter";
+import Table from "./components/Table";
+import SearchInput from "./components/SearchInput";
+import CheckBoxFilter from "./components/CheckBoxFilter";
 
 const getFilteredRow = (rows, filteredKey) => {
 	return rows.filter((row) =>
@@ -60,7 +60,7 @@ function App() {
 	const [results, setResults] = useState([]);
 	const [sortingDirections, setSortingDirections] = useState({});
 	const [currentPage, setCurrentPage] = useState(1);
-	const [postsPerPage, setPostsPerPage] = useState(10);
+	const [postsPerPage] = useState(10);
 	// TODO Fix initial buttons
 	const [totalPostsCount, setTotalPostsCount] = useState(0);
 	const [inputFieldValue, setInputFieldValue] = useState("");
@@ -69,7 +69,7 @@ function App() {
 	);
 
 	const getResults = (data) => {
-		return data?.results;
+		return data;
 	};
 
 	const onHandleChange = (e) => {
@@ -96,7 +96,7 @@ function App() {
 				const data = getResults(characters);
 				if (Array.isArray(data)) {
 					setResults(data);
-					setTotalPostsCount(characters?.count || 0);
+					setTotalPostsCount(characters?.length || 0);
 				} else {
 					console.error("Data is not an array:", data);
 				}
@@ -175,7 +175,6 @@ function App() {
 		} else if (value === "&raquo;") {
 			setCurrentPage(totalPostsCountByPostsPerPage);
 		} else if (value === "..." || value === " ...") {
-		} else {
 			setCurrentPage(value);
 		}
 	};
