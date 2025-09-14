@@ -76,16 +76,15 @@ const Table = ({
 	}, [filteredRows, defaultFilterKeys, visibleColumns]);
 
 	const getClassNamesFor = (sortKey, sortingDirections) => {
-		//TODO fix sort buttons?
 		switch (sortingDirections[sortKey]) {
 			case "UNSORTED":
-				return "g";
+				return <span className="sort-icon unsorted">↕</span>;
 			case "ASC":
-				return "a";
+				return <span className="sort-icon asc">▲</span>;
 			case "DESC":
-				return "s";
+				return <span className="sort-icon desc">▼</span>;
 			default:
-				return "g";
+				return <span className="sort-icon unsorted">↕</span>;
 		}
 	};
 
@@ -111,9 +110,6 @@ const Table = ({
 											<button
 												key={column.id}
 												style={{
-													fontFamily: "AttackPosition-Symbols",
-													fontWeight: "normal",
-													fontStyle: "normal",
 													fontSize: "14px",
 													backgroundColor: "transparent",
 													border: 0,

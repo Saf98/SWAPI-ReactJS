@@ -228,16 +228,6 @@ th {
 	padding: 2px;
 }
 
-.unsorted::after {
-	content: "\2B81";
-}
-.ascending::after {
-	content: "\2B85";
-}
-.descending::after {
-	content: "\2B87";
-}
-
 .loading {
 	position: relative;
 	font-size: 24px;

@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Fragment, useState, useEffect, useMemo } from "react";
+import { Fragment, useState, useEffect, useMemo } from "react";
 import { getData } from "./services/getData";
 import Header from "./components/Header";
 import Pagination from "./components/Pagination";
